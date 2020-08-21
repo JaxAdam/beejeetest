@@ -44,13 +44,6 @@ class Db
     public function getAll($query, $parameters = array())
     {
         $statementHandle = $this->db->prepare($query);
-//        foreach ($parameters as $parameterName => $parameterValue){
-//            if(is_int($parameterValue)){
-//                $statementHandle->bindValue(':'.$parameterName, (int) $parameterValue, PDO::PARAM_INT);
-//            }else{
-//                $statementHandle->bindValue(':'.$parameterName, $parameterValue);
-//            }
-//        }
         $statementHandle->execute((array) $parameters);
         return $statementHandle->fetchAll(PDO::FETCH_ASSOC);
     }
